@@ -59,6 +59,19 @@ public class WaterContainer {
         }
     }
 
+    public void pourWater(WaterContainer sourceContainer, double amount) {
+        if (amount <= 0) {
+            System.out.println("Amount should be > 0");
+        } else if (sourceContainer.currentWaterLevel < 0) {
+            System.out.println("Not enough water in source container");
+        } else if (currentWaterLevel + amount > maxCapacity) {
+            System.out.println("Not enough capacity in container");
+        } else {
+            sourceContainer.currentWaterLevel -= amount;
+            currentWaterLevel += amount;
+        }
+    }
+
 
     @Override
     public boolean equals(Object o) {
