@@ -38,6 +38,15 @@ public class WaterContainer {
         this.currentWaterLevel = currentWaterLevel;
     }
 
+    public void addWater(double amount) {
+        if (amount <= 0) {
+            System.out.println("Amount should be > 0");
+        } else if (amount + currentWaterLevel > maxCapacity) {
+            System.out.println("Too much water to add");
+        }
+        currentWaterLevel += amount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -58,4 +67,5 @@ public class WaterContainer {
                 ", currentWaterLevel=" + currentWaterLevel +
                 '}';
     }
+
 }
