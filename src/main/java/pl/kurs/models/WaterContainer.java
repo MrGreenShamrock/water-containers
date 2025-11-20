@@ -49,6 +49,17 @@ public class WaterContainer {
     }
 
 
+    public void subtractWater(double amount) {
+        if (amount <= 0) {
+            System.out.println("Amount should be > 0");
+        } else if (currentWaterLevel - amount < 0) {
+            System.out.println("Too much water to subtract");
+        } else {
+            currentWaterLevel -= amount;
+        }
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
