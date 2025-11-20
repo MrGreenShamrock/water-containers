@@ -43,9 +43,11 @@ public class WaterContainer {
             System.out.println("Amount should be > 0");
         } else if (amount + currentWaterLevel > maxCapacity) {
             System.out.println("Too much water to add");
+        } else {
+            currentWaterLevel += amount;
         }
-        currentWaterLevel += amount;
     }
+
 
     @Override
     public boolean equals(Object o) {
