@@ -3,8 +3,8 @@ package pl.kurs.models;
 import java.util.Objects;
 
 public class WaterContainer {
-    private String name;
-    private double maxCapacity;
+    private final String name;
+    private final double maxCapacity;
     private double currentWaterLevel;
 
 
@@ -18,16 +18,8 @@ public class WaterContainer {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getMaxCapacity() {
         return maxCapacity;
-    }
-
-    public void setMaxCapacity(double maxCapacity) {
-        this.maxCapacity = maxCapacity;
     }
 
     public double getCurrentWaterLevel() {
