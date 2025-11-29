@@ -9,6 +9,15 @@ public class WaterContainer {
 
 
     public WaterContainer(String name, double maxCapacity, double currentWaterLevel) {
+        if (maxCapacity <= 0) {
+            throw new RuntimeException("Max capacity should be more than 0");
+        }
+        if (currentWaterLevel < 0) {
+            throw new RuntimeException("Current water level should be 0 or more.");
+        }
+        if (currentWaterLevel > maxCapacity) {
+            throw new RuntimeException("too much water regarding to max capacity.");
+        }
         this.name = name;
         this.maxCapacity = maxCapacity;
         this.currentWaterLevel = currentWaterLevel;
