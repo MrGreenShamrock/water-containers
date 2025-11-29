@@ -42,7 +42,7 @@ public class WaterContainer {
     public void addWater(double amount) {
         if (amount <= 0) {
             System.out.println("Amount should be > 0");
-        } else if (amount + currentWaterLevel > maxCapacity) {
+        } else if (!addIsPossible(amount)) {
             System.out.println("Too much water to add");
         } else {
             currentWaterLevel += amount;
@@ -53,7 +53,7 @@ public class WaterContainer {
     public void subtractWater(double amount) {
         if (amount <= 0) {
             System.out.println("Amount should be > 0");
-        } else if (currentWaterLevel - amount < 0) {
+        } else if (!subtractIsPossible(amount)) {
             System.out.println("Too much water to subtract");
         } else {
             currentWaterLevel -= amount;
@@ -63,14 +63,22 @@ public class WaterContainer {
     public void pourWater(WaterContainer sourceContainer, double amount) {
         if (amount <= 0) {
             System.out.println("Amount should be > 0");
-        } else if (sourceContainer.currentWaterLevel < 0) {
+        } else if (!sourceContainer.subtractIsPossible(amount)) {
             System.out.println("Not enough water in source container");
-        } else if (currentWaterLevel + amount > maxCapacity) {
+        } else if (!addIsPossible(amount)) {
             System.out.println("Not enough capacity in container");
         } else {
             sourceContainer.currentWaterLevel -= amount;
             currentWaterLevel += amount;
         }
+    }
+
+    private boolean addIsPossible(double amount) {
+        return currentWaterLevel + amount <= maxCapacity;
+    }
+
+    private boolean subtractIsPossible(double amount) {
+        return currentWaterLevel - amount >= 0;
     }
 
 
